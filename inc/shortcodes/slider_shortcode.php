@@ -21,12 +21,12 @@ class SliderShortcode
         $tpp_atts = shortcode_atts([
             'id'    => '',
             'class' => '',
-            'width' => ''//'720px'
+            'data' => ''
         ], $atts, $tag);
 
-        $style = '';
-        if ($tpp_atts['width'] != ''){
-            $style = 'style="max-width:' . $tpp_atts['width'] . '"';
+        $data_attr = '';
+        if ($tpp_atts['data'] != ''){
+            $data_attr = "data-slick='". $tpp_atts['data'] . "'";
         }
 
         $id_container = '';
@@ -39,7 +39,7 @@ class SliderShortcode
         // start output
         $o = '';
 
-        $o .= '<div ' . $id_container . ' class="tpp-power-slider ' . $tpp_atts['class'] . '">';
+        $o .= '<div ' . $id_container . ' class="tpp-power-slider ' . $tpp_atts['class'] . '" '.$data_attr.'>';
 
         // enclosing tags
         if (!is_null($content)) {
