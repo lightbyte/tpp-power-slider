@@ -39,10 +39,7 @@ class SliderShortcode
         // start output
         $o = '';
 
-        $o .= '<div ' . $id_container . ' class="tpp-power-slider slider multiple-items slick-initialized slick-slider slick-dotted ' . $tpp_atts['class'] . '">';
-        // $o .= '<div ' . $id_carousel . ' class="carousel slide" data-ride="carousel" data-pause="hover" '.$style.'>';
-
-        // $o .= '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>';
+        $o .= '<div ' . $id_container . ' class="tpp-power-slider ' . $tpp_atts['class'] . '">';
 
         // enclosing tags
         if (!is_null($content)) {
@@ -53,17 +50,6 @@ class SliderShortcode
 
             // $o .= '</div>';
         }
-
-        // $o .= '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>';
-
-        // $o .= '<a class="carousel-control-prev" href="#carousel-id-' . $tpp_atts['id'] . '" role="button" data-slide="prev">';
-        // $o .= '<span class="carousel-control-prev-icon fa fa-caret-left" aria-hidden="true"></span>';
-        // $o .= '<span class="sr-only">Previous</span>';
-        // $o .= '</a>';
-        // $o .= '<a class="carousel-control-next" href="#carousel-id-' . $tpp_atts['id'] . '" role="button" data-slide="next">';
-        // $o .= '<span class="carousel-control-next-icon fa fa-caret-right" aria-hidden="true"></span>';
-        // $o .= '<span class="sr-only">Next</span>';
-        // $o .= '</a>';
 
         // end box
         $o .= '</div>';
@@ -86,17 +72,11 @@ class SliderShortcode
         // start output
         $o = '';
 
-        $active = '';
-        // if (!$this->has_active_slide){
-        //     $this->has_active_slide = true;
-        //     $active = 'active';
-        // }
-
         // enclosing tags
         if (!is_null($content)) {
-            $o .= '<div class="slider-item '.$active.'">';
+            $o .= '<div class="slider-item">';
 
-            $o .= $content;
+            $o .= do_shortcode($content);
 
             $o .= '</div>';
         }
@@ -108,6 +88,6 @@ class SliderShortcode
     public function enqueue_styles()
     {
         wp_enqueue_style('tppps-styles', tppps_path('APP_URI', 'assets/css/styles.min.css'));
-        wp_enqueue_script('tppps-script', tppps_path('APP_URI', 'assets/js/script.js'), array('jquery', 'jquery-migrate'));
+        wp_enqueue_script('tppps-script', tppps_path('APP_URI', 'assets/js/all.min.js'), array('jquery', 'jquery-migrate'));
     }
 }

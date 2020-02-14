@@ -124,7 +124,7 @@ gulp.task('styles', function (callback) {
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function () {
 	var scripts = [
-		`${paths.dev}/js/slick.min.js`,
+		`${paths.dev}/js/slick.js`,
 		`${paths.dev}/js/script.js`
 	];
 	gulp
@@ -134,14 +134,14 @@ gulp.task('scripts', function () {
 			presets: ['@babel/preset-env']
 			}
 		))
-		.pipe(concat('script.min.js'))
+		.pipe(concat('all.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(paths.js));
 
 	return gulp
 		.src(scripts, { allowEmpty: true })
 		.pipe(babel())
-		.pipe(concat('script.js'))
+		.pipe(concat('all.js'))
 		.pipe(gulp.dest(paths.js));
 });
 
@@ -159,6 +159,10 @@ gulp.task('copy-assets', function (done) {
 	// Copy all JS files
 	var stream = gulp
 		.src(`${paths.node}slick-carousel/slick/slick.min.js`)
+		.pipe(gulp.dest(`${paths.dev}/js/`));
+
+	gulp
+		.src(`${paths.node}slick-carousel/slick/slick.js`)
 		.pipe(gulp.dest(`${paths.dev}/js/`));
 
 	gulp
