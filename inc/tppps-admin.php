@@ -89,6 +89,10 @@ class TpppsManager
 		require_once $this->path('SHORTCODES_DIR', 'slider_shortcode.php');
 		$slider = new SliderShortcode();
 		$slider->init();
+
+		require_once $this->path('SHORTCODES_DIR', 'loop_posts.php');
+		$postsSlider = new PostsSliderShortcode();
+		$postsSlider->init();
 	}
 
 	public function activationHook( $networkWide = false ) {

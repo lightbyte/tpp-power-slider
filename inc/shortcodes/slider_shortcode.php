@@ -26,7 +26,23 @@ class SliderShortcode
 
         $data_attr = '';
         if ($tpp_atts['data'] != ''){
-            $data_attr = "data-slick='". $tpp_atts['data'] . "'";
+            // $data_attr = "data-slick='". $tpp_atts['data'] . "'";
+            $data_attr = 'data-slick=\'{"autoplay": true,
+                "dots": false,
+                "infinite": true,
+                "slidesToShow": 3,
+                "slidesToScroll": 3,
+                "responsive":[
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                "slidesToShow": 3,
+                                "slidesToScroll": 3,
+                            }
+
+                        }]
+                    }\'';
         }
 
         $id_container = '';
